@@ -1,0 +1,59 @@
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    box-shadow: 0 6px 16px rgba(15, 157, 107, 0.25);
+}
+
+#gameIntro,
+#gameResult,
+#gameSummary {
+    text-align: center;
+}
+
+#gameIntro {
+    padding: 10px 0 4px;
+}
+
+#gameIntro p {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+
+#gameIntro .action-btn,
+#gamePlay .action-btn,
+#gameResult .action-btn,
+#gameSummary .action-btn {
+    width: 100%;
+}
+
+#gameResultTitle {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+#gameFinalScore {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 14px 0 6px;
+}
+
+.game-hint {
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    margin: 14px 0;
+    font-size: 0.88rem;
+}
