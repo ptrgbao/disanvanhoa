@@ -1,0 +1,137 @@
+#mapContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.marker-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border: 2px solid white;
+    transition: transform 0.2s ease;
+    color: #fff;
+}
+
+.marker-icon:hover {
+    transform: scale(1.2);
+}
+
+.marker-nhac_cu { background: #e91e63; }
+.marker-tieng_rao { background: #ff9800; }
+.marker-le_hoi { background: #9c27b0; }
+.marker-lang_nghe { background: #795548; }
+.marker-thien_nhien { background: #4caf50; }
+
+.leaflet-popup-content-wrapper {
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(15, 27, 23, 0.16), 0 2px 6px rgba(15, 27, 23, 0.06);
+    border: 1px solid var(--border, #e4ebe6);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.leaflet-popup-tip {
+    box-shadow: 0 4px 12px rgba(15, 27, 23, 0.12);
+}
+
+.leaflet-popup-content {
+    margin: 14px 16px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text, #0f1b17);
+}
+
+.popup-title {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.popup-category {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    background: var(--primary-50, #e6f9f0);
+    color: var(--primary-dark, #067a52);
+}
+
+.guess-marker {
+    background: #2196f3;
+    border: 3px solid white;
+}
+
+.answer-marker {
+    background: #4caf50;
+    border: 3px solid white;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.marker-faded {
+    opacity: 0.35;
+    filter: grayscale(1);
+}
+
+.sovereignty-marker,
+.sovereignty-label,
+.merger-label,
+.vn-label {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.sovereignty-text,
+.vn-label,
+.merger-text {
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.sovereignty-text {
+    font-weight: 700;
+    font-size: 12px;
+    color: #d32f2f;
+    line-height: 1.3;
+}
+
+.sovereignty-text small {
+    font-weight: 600;
+    font-size: 10px;
+    color: #b71c1c;
+}
+
+.vn-label-large {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+
+.vn-label-medium {
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+}
+
+.vn-label-sea {
+    font-size: 14px;
+    font-weight: 700;
+    font-style: italic;
+    color: #1565c0;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.7), -1px -1px 0 rgba(255,255,255,0.7), 1px -1px 0 rgba(255,255,255,0.7), -1px 1px 0 rgba(255,255,255,0.7);
+}

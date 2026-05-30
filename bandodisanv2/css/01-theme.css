@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #0f9d6b;
+    --primary-light: #24c584;
+    --primary-dark: #067a52;
+    --primary-50: #e6f9f0;
+    --primary-100: #c5f0dc;
+    --accent: #ff9b3d;
+    --coral: #ff6b7a;
+    --sky: #38bdf8;
+    --bg: #f6f8f5;
+    --bg-soft: #eef3ee;
+    --bg-panel: #ffffff;
+    --surface-tint: #f0faf5;
+    --text: #0f1b17;
+    --text-muted: #4c5a55;
+    --text-light: #7a857f;
+    --text-white: #ffffff;
+    --border: #e4ebe6;
+    --border-strong: #cfd8d1;
+    --shadow-md: 0 8px 24px rgba(15, 27, 23, 0.08), 0 2px 6px rgba(15, 27, 23, 0.04);
+    --shadow-lg: 0 20px 48px rgba(15, 27, 23, 0.12), 0 4px 12px rgba(15, 27, 23, 0.06);
+    --shadow-glow: 0 0 0 4px rgba(15, 157, 107, 0.12);
+    --danger: #ef4444;
+    --danger-soft: #fee2e2;
+    --gradient-primary: linear-gradient(135deg, #0f9d6b 0%, #24c584 60%, #38bdf8 130%);
+    --gradient-warm: linear-gradient(135deg, #ff9b3d 0%, #ff6b7a 100%);
+    --gradient-header: linear-gradient(120deg, #067a52 0%, #0f9d6b 45%, #24c584 100%);
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-pill: 999px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --transition: 0.25s var(--ease);
+    --transition-slow: 0.4s var(--ease);
+    --header-h: 64px;
+    --bottom-nav-h: 68px;
+    --panel-w: 420px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

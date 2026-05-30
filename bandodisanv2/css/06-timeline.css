@@ -1,0 +1,90 @@
+#timelineContainer {
+    margin: 18px 0;
+    padding: 16px;
+    background: var(--surface-tint);
+    border-radius: var(--radius);
+    border: 1px solid var(--primary-100);
+}
+
+#timelineContainer h3 {
+    margin-top: 0;
+}
+
+#timelineSlider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--primary);
+    margin-top: 6px;
+}
+
+#timelineLabels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+#timelineContext {
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 10px;
+    color: var(--text-muted);
+}
+
+.timeline-disappeared {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+#eraToggle {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 800;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-pill);
+    padding: 6px 10px 6px 14px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: calc(100% - 36px);
+}
+
+.era-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.era-btn {
+    padding: 6px 13px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--bg-soft);
+    font-family: inherit;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.era-btn:hover {
+    background: var(--primary-50);
+    color: var(--primary-dark);
+}
+
+.era-btn.active {
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    box-shadow: 0 3px 10px rgba(15, 157, 107, 0.3);
+}

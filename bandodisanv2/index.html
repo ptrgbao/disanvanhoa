@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heritage SoundMap AI</title>
+ 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/01-theme.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-map.css">
+  <link rel="stylesheet" href="css/05-game.css">
+  <link rel="stylesheet" href="css/06-timeline.css">
+  <link rel="stylesheet" href="css/07-contribute.css">
+  <link rel="stylesheet" href="css/08-responsive.css">
+</head>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/contribute.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</head>
+<body>
+  <header id="appHeader">
+    <div class="header-left">
+      <div class="app-title">Heritage SoundMap AI</div>
+      <div class="app-subtitle">Explore, identify, and preserve living sound heritage</div>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-panel="explore">Explore</button>
+      <button class="nav-btn" data-panel="timeline">Timeline</button>
+      <button class="nav-btn" data-panel="game">Game</button>
+      <button class="nav-btn" data-panel="contribute">Contribute</button>
+    </nav>
+  </header>
+
+  <main id="appMain">
+    <div id="mapContainer"></div>
+
+    <div id="eraToggle" aria-label="Province era toggle">
+      <span class="era-label">Province Era</span>
+      <button class="era-btn active" data-era="current">Current</button>
+      <button class="era-btn" data-era="pre">Pre-2025</button>
+      <button class="era-btn" data-era="post_2025">Post-2025</button>
+    </div>
+
+    <section id="explorePanel" class="panel" aria-label="Sound detail">
+      <button class="panel-close" data-close aria-label="Close panel">&times;</button>
+      <h2 id="soundTitle">Street Vendor Call</h2>
+      <span id="soundCategory" class="sound-category">Tiếng rao</span>
+      <span id="soundRegion" class="sound-region">Hà Nội</span>
+      <p id="soundSummary">A bright morning call from a neighborhood vendor, layered with motorbikes, birds, and market chatter.</p>
+      <div class="audio-player">
+        <button id="playSound" class="play-btn">Play sound sample</button>
+      </div>
+      <div class="sound-story" id="soundStory">
+        These calls carry small fragments of daily life: route, rhythm, product, and memory. The map collects them as cultural signals tied to place.
+      </div>
+      <h3>AI interpretation</h3>
+      <div id="aiResultContent">Likely source: human voice, open street, morning market. Cultural context: neighborhood commerce and informal oral advertising.</div>
+    </section>
+
+    <section id="timelinePanel" class="panel hidden" aria-label="Timeline">
+      <button class="panel-close" data-close aria-label="Close panel">&times;</button>
+      <h2>Sound Timeline</h2>
+      <p>Move through eras to see which sounds remain common, rare, or at risk.</p>
+      <div id="timelineContainer">
+        <h3>Era focus</h3>
+        <input id="timelineSlider" type="range" min="0" max="3" value="2">
+        <div id="timelineLabels">
+          <span>1980</span><span>2000</span><span>2020</span><span>2026</span>
+        </div>
+        <p id="timelineContext">2020: mobile recordings and community archives begin making local sound heritage easier to preserve.</p>
+      </div>
+      <p><span class="timeline-disappeared">At-risk sounds</span> are faded on the map when they are uncommon in the selected era.</p>
+    </section>
+
+    <section id="gamePanel" class="panel hidden" aria-label="Guess the sound game">
+      <button class="panel-close" data-close aria-label="Close panel">&times;</button>
+      <h2>Guess The Sound</h2>
+      <div id="gameIntro">
+        <p>Listen to the clue, then choose the place where it belongs.</p>
+        <button id="startGame" class="action-btn">Start round</button>
+      </div>
+      <div id="gamePlay" class="hidden">
+        <div class="game-info">
+          <span>Round <strong id="roundNumber">1</strong>/3</span>
+          <span>Score <strong id="scoreNumber">0</strong></span>
+        </div>
+        <p id="gamePrompt" class="game-hint">Which marker matches a festival drum recording?</p>
+        <button id="submitGuess" class="action-btn secondary">Submit highlighted marker</button>
+      </div>
+      <div id="gameResult" class="hidden">
+        <div id="gameResultTitle">Correct</div>
+        <p id="gameResultDetail">That sound belongs to Huế ceremonial music.</p>
+        <button id="nextRound" class="action-btn">Next round</button>
+      </div>
+      <div id="gameSummary" class="hidden">
+        <h3>Final Score</h3>
+        <div id="gameFinalScore">0</div>
+        <p id="gameCorrectCount">0 correct answers</p>
+        <button id="restartGame" class="action-btn">Play again</button>
+      </div>
+    </section>
+
+    <section id="contributePanel" class="panel hidden" aria-label="Contribute sound">
+      <button class="panel-close" data-close aria-label="Close panel">&times;</button>
+      <h2>Contribute A Sound</h2>
+      <p>Share a recording and the story behind it.</p>
+      <form id="contributeForm">
+        <div class="form-group">
+          <label for="contribTitle">Title</label>
+          <input id="contribTitle" type="text" placeholder="E.g. Afternoon flute practice">
+        </div>
+        <button id="btnPickLocation" type="button" class="action-btn secondary">Pick location on map</button>
+        <div id="contribLocation">No location selected</div>
+        <div class="form-group">
+          <label for="contribStory">Story</label>
+          <textarea id="contribStory" placeholder="What should future listeners know?"></textarea>
+        </div>
+        <button id="btnContribRecord" type="button" class="action-btn secondary">Record sample</button>
+        <input id="contribFile" type="file" accept="audio/*">
+        <button type="submit" class="action-btn">Submit contribution</button>
+      </form>
+    </section>
+
+    <div id="filterBar" aria-label="Sound filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="nhac_cu">Instruments</button>
+      <button class="filter-btn" data-filter="tieng_rao">Street calls</button>
+      <button class="filter-btn" data-filter="le_hoi">Festivals</button>
+      <button class="filter-btn" data-filter="lang_nghe">Craft</button>
+      <button class="filter-btn" data-filter="thien_nhien">Nature</button>
+    </div>
+
+    <div id="locationPickerBanner" class="hidden">
+      <div class="picker-banner-content">
+        <div class="picker-banner-icon">+</div>
+        <div class="picker-banner-text">
+          <strong>Tap the map to choose a location</strong>
+          <small>Your panel will return after the point is selected.</small>
+        </div>
+        <button id="cancelPickLocation" class="picker-banner-cancel">Cancel</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div id="loadingText">Loading sound map</div>
+  </div>
+  <div id="toast" class="hidden"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
